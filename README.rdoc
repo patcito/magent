@@ -46,6 +46,9 @@ start the worker:
 
     magent start
 
+== Failure
+
+If a job raises an exception, it is logged and handed off to the Magent::Failure module. Failures are logged locally in MongoDB.
 
 == RAILS SUPPORT
 
@@ -57,10 +60,23 @@ start the worker:
 
 = starting the worker
 
-to run the jobs in rails type:
+to run the jobs in rails, type:
 
     rake magent:start
 
+= list errors
+
+to can get the list of failed jobs, type:
+
+    rake magent:errors
+
+once you have fixed the code producing those failed jobs, you can re-run those failed jobs by typing:
+
+    rake magent:retry
+
+to clean the log of failed jobs, just type:
+
+    rake magent:remove_errors
 
 == LICENSE:
 
